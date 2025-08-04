@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristina Chamorro - Portafolio</title>
+    <!-- Importación de iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Importación de la fuente Montserrat de Google Fonts para un estilo minimalista -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales y variables CSS para el tema oscuro */
+        :root {
+            --primary-bg: #1a1a2e;
+            --secondary-bg: #16213e;
+            --text-light: #e4e6eb;
+            --text-accent: #e94560;
+            --text-highlight: #0f3460;
+            --card-bg: #2b2b45;
+            --border-radius: 8px;
+            --font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Encabezado fijo con navegación */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: var(--border-radius);
+        }
+
+        .nav-list a:hover {
+            color: var(--text-accent);
+            background-color: var(--text-highlight);
+        }
+
+        /* Estilo de las secciones principales */
+        .section {
+            background-color: var(--secondary-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            scroll-margin-top: 100px;
+        }
+
+        /* Estilo del título principal */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-accent);
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Estilo de los encabezados de sección */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-accent);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--text-accent);
+            border-radius: 2px;
+        }
+        
+        /* Estilos para el contacto */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--text-accent);
+        }
+
+        /* Estilos para las tarjetas de contenido */
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h4 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--text-accent);
+        }
+        
+        .card p, .card ul {
+            font-size: 1rem;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--text-accent);
+        }
+        
+        /* Estilos para la cuadrícula de habilidades */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            color: var(--text-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            font-weight: 500;
+        }
+        
+        /* Pie de página */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #7f8c8d;
+        }
+
+        /* Media Queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#experience">Experiencia</a></li>
+                <li><a href="#education">Formación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Cristina Chamorro</h1>
+            <h2>Desarrolladora Full Stack</h2>
+            <p>
+                Ingeniera en Computación e Informática con experiencia 
+                práctica como Desarrolladora Full Stack. 
+                <br><br>
+                Me especializo en la implementación de funcionalidades
+                 en Node.JS y Express,
+                configuración de certificados SSL y optimización 
+                de bases de datos.
+                <br><br>
+                Mi perfil se enfoca en la colaboración en equipo y la entrega de soluciones tecnológicas eficientes.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:cristinachamorroo@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/cchamorrop" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/cristina97" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="tel:+56982001579" title="Teléfono"><i class="fas fa-phone"></i></a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h3 class="section-title">Sobre Mí</h3>
+            <p>
+                Como Ingeniera en Computación e Informática, 
+                poseo una sólida base técnica y experiencia práctica en 
+                el desarrollo de software. 
+                <br><br>
+                Poseo competencias blandas 
+                como autodidacta, proactiva, colaborativa, con
+                habilidades de comunicación efectiva, capacidad analitica y resolutiva.
+                Me apasiona aprender nuevas tecnologías y enfrentar desafíos.
+                <br><br>
+                He trabajado en proyectos que 
+                involucran la implementación de funcionalidades 
+                en Node.JS y Express, optimización de consultas SQL en
+                 bases de datos como Oracle. Con un enfoque en metodologías
+                  ágiles (Scrum, Kanban).
+                
+            </p>
+        </section>
+
+        <section id="skills" class="section">
+            <h3 class="section-title">Habilidades Técnicas</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <p>Lenguajes de Programación</p>
+                    <p>Java, C#, JS, Python, SQL</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-tools"></i>
+                    <p>Frameworks y Herramientas</p>
+                    <p>Node.js, Express , Git</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <p>Bases de Datos y Cloud</p>
+                    <p>Oracle, SQL, AWS, Azure</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <p>Metodologías</p>
+                    <p>Scrum, Kanban</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h3 class="section-title">Experiencia Laboral</h3>
+            <div class="card">
+                <h4>Desarrollador Full Stack</h4>
+                <p><strong>Revista Mujer, México</strong> | Abril 2023</p>
+                <ul>
+                    <li>Desarrollo e implementación de funcionalidades en Node.js y Express.</li>
+                    <li>Configuración de certificados SSL, protocolos HTTPS.</li>
+                    <li>Optimización de consultas SQL en Oracle.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Ejecutiva de Ventas y Atención Telefónica</h4>
+                <p><strong>People BPO y Banco Estado, Concepción</strong> | Agosto 2022 - Enero 2023</p>
+                <ul>
+                    <li>Soporte y orientación a clientes, desarrollando habilidades de comunicación.</li>
+                    <li>Manejo de situaciones desafiantes y seguimiento para la satisfacción del cliente.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h3 class="section-title">Formación Académica</h3>
+            <div class="card">
+                <h4>Licenciatura en Ingeniería en Computación e Informática</h4>
+                <p><strong>Universidad Andrés Bello, Santiago</strong> | 2026</p>
+            </div>
+            <div class="card">
+                <h4>Técnico de Nivel Superior Analista Programador</h4>
+                <p><strong>Instituto Profesional INACAP, Talcahuano-Concepción</strong> | 2023</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Cristina Chamorro. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
